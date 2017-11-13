@@ -61,14 +61,10 @@ const FILTERS = {
     return todos
   },
   active(todos) {
-    return todos.filter(function (todo) {
-      return !todo.completed
-    })
+    return todos.filter(todo => !todo.completed)
   },
   completed(todos) {
-    return todos.filter(function (todo) {
-      return todo.completed
-    })
+    return todos.filter(todo => todo.completed)
   }
 }
 
@@ -79,7 +75,7 @@ export default {
       visibility: 'all',
       newTodo: {
         title: '',
-        assignee: 'me'
+        assignee: ''
       },
       todos: todoStorage.fetch().filter(todo => this.$can('read', todo)),
     }
@@ -125,13 +121,13 @@ export default {
   // note there's no DOM manipulation here at all.
   methods: {
     addTodo() {
-      if (!this.newTodo.title.trim()) {
+      if (!this.newTodo.title.trim() || !this.newTodo.assignee) {
         return
       }
 
       this.todos.push(todoStorage.build(this.newTodo))
       this.newTodo.title = ''
-      this.newTodo.assignee = 'me'
+      this.newTodo.assignee = ''
     },
 
     removeTodo(todo) {
@@ -139,7 +135,7 @@ export default {
     },
 
     editTodo(todo) {
-      this.beforeEditCache = todo.title
+      this.beforeEditCache = Object.assign({}, todo)
       this.editedTodo = todo
     },
 
@@ -156,7 +152,7 @@ export default {
 
     cancelEdit(todo) {
       this.editedTodo = null
-      todo.title = this.beforeEditCache
+      Object.assign(todo, this.beforeEditCache)
     },
 
     removeCompleted() {
