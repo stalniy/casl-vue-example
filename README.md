@@ -1,8 +1,10 @@
 # casl-vue-example
 
-> Example of CASL based auhorization integration with vue
+This example shows how to integrate CASL auhorization in Vuejs2 application
 
-## Build Setup
+> Generate with vue-cli
+
+## Installation
 
 ``` bash
 # install dependencies
@@ -10,12 +12,20 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Description
+
+This application is a basic Todo application with possibility to specify assignee for a task. By default, all users are able to create and read all tasks but update and delete only assigned to them. Any user may create a task and assign it to other users.
+
+Ability configuration can be found in `src/config/ability.js`, the Vue plugin for abilities is in `src/config/ability-plugin.js`. The plugin adds `$can` (references `ability.can`) method to every Vue component and make sure that all components are updated when `ability.update` method is called.
+
+## Example
+
+```html
+<div class="view">
+  <input class="toggle" type="checkbox" v-model="todo.completed" v-if="$can('update', todo)">
+  <label @dblclick="$can('update', todo) && editTodo(todo)">{{ todo.title }}</label>
+  <button class="destroy" v-if="$can('delete', todo)" @click="removeTodo(todo)"></button>
+</div>
+```
