@@ -1,23 +1,22 @@
 export default function abilitiesPlugin(Vue, ability) {
-  const bus = new Vue()
-  const update = ability.update
+  const watcher = new Vue({
+    data: {
+      rules: []
+    }
+  })
 
-  ability.update = function updateAndNotify(...args) {
-    const result = update.apply(this, args)
-    bus.$emit('ability:update')
-    return result
+  const update = ability.update
+  ability.update = function updateAndNotify(rules) {
+    watcher.rules = rules
+    return update.call(this, rules)
   }
 
   Vue.mixin({
     methods: {
-      $can: ability.can.bind(ability)
-    },
-    beforeCreate() {
-      this.$forceUpdate = this.$forceUpdate.bind(this)
-      bus.$on('ability:update', this.$forceUpdate)
-    },
-    beforeDestroy() {
-      bus.$off('ability:update', this.$forceUpdate)
+      $can(...args) {
+        watcher.rules // create dependency
+        return ability.can(...args)
+      }
     }
   })
 }
