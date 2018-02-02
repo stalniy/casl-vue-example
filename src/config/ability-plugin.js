@@ -5,11 +5,7 @@ export default function abilitiesPlugin(Vue, ability) {
     }
   })
 
-  const update = ability.update
-  ability.update = function updateAndNotify(rules) {
-    watcher.rules = rules
-    return update.call(this, rules)
-  }
+  ability.on('update', ({ rules }) => watcher.rules = rules)
 
   Vue.mixin({
     methods: {
