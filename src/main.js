@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import ability from './config/ability'
-import abilitiesPlugin from './config/ability-plugin'
+import { abilitiesPlugin } from '@casl/vue'
 
 Vue.config.productionTip = false
 Vue.use(abilitiesPlugin, ability)
