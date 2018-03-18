@@ -5,7 +5,7 @@ Read [Vue ACL with CASL](https://medium.com/@sergiy.stotskiy/vue-acl-with-casl-7
 
 > Generate with vue-cli
 
-**Note**: updated to use CASL 2.0: @casl/ability + @casl/vue
+**Note**: refactored to use CASL 2.0. See [@casl/ability][casl-ability] and [@casl/vue][casl-vue] for details.
 
 ## Installation
 
@@ -32,3 +32,6 @@ Ability configuration can be found in `src/config/ability.js`, the Vue plugin fo
   <button class="destroy" v-if="$can('delete', todo)" @click="removeTodo(todo)"></button>
 </div>
 ```
+
+[casl-ability]: https://github.com/stalniy/casl/tree/master/packages/casl-ability
+[casl-vue]: https://github.com/stalniy/casl/tree/master/packages/casl-vue
