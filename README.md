@@ -1,9 +1,11 @@
 # CASL and Vue integration example
 
-This example shows how to integrate CASL auhorization in Vuejs2 application. 
+This example shows how to integrate CASL auhorization in Vuejs2 application.
 Read [Vue ACL with CASL](https://medium.com/@sergiy.stotskiy/vue-acl-with-casl-781a374b987a) for detailed explanation.
 
 > Generate with vue-cli
+
+**Note**: updated to use CASL 2.0: @casl/ability + @casl/vue
 
 ## Installation
 
