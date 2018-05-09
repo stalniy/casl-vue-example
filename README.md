@@ -33,5 +33,9 @@ Ability configuration can be found in `src/config/ability.js`, the Vue plugin fo
 </div>
 ```
 
+---- 
+
+**Another example**: Example of integration [CASL with Vuex and REST API](https://github.com/stalniy/casl-vue-api-example)
+
 [casl-ability]: https://github.com/stalniy/casl/tree/master/packages/casl-ability
 [casl-vue]: https://github.com/stalniy/casl/tree/master/packages/casl-vue
