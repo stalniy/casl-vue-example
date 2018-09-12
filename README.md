@@ -21,7 +21,7 @@ npm run dev
 
 This application is a basic Todo application with possibility to specify assignee for a task. By default, all users are able to create and read all tasks but update and delete only assigned to them. Any user may create a task and assign it to other users.
 
-Ability configuration can be found in `src/config/ability.js`, the Vue plugin for abilities is in `src/config/ability-plugin.js`. The plugin adds `$can` (references `ability.can`) method to every Vue component and make sure that all components are updated when `ability.update` method is called.
+Ability configuration can be found in `src/config/ability.js`, the Vue plugin for abilities is provided by `@casl/vue`. The plugin adds `$can` (references `ability.can`) method to every Vue component and make sure that all components (that use `$can`) are updated when `ability.update` method is called.
 
 ## Example
 
