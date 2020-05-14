@@ -1,5 +1,7 @@
 # CASL and Vue integration example
 
+## DEPRECATED The example has been moved to https://github.com/stalniy/casl-examples/tree/master/packages/vue-todo
+
 This example shows how to integrate CASL auhorization in Vuejs2 application.
 Read [Vue ACL with CASL](https://medium.com/@sergiy.stotskiy/vue-acl-with-casl-781a374b987a) for detailed explanation.
 
